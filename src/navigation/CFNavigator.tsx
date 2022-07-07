@@ -96,31 +96,31 @@ export type CFTabScreenNavigationProp<Screen extends keyof CFTabParamList> =
 const Tab = createBottomTabNavigator<CFTabParamList>()
 
 function CFTabNavigator() {
-  const [isOpen,  setIsopen] = React.useState(false);
+  const [isOpen, setIsopen] = React.useState(false);
   return (
-      <SideMenu menu={SideMenuContent({type:true})}  isOpen={isOpen} onChange={()=>{setIsopen(!isOpen);}} openMenuOffset={Dimensions.get('window').width*0.2}>
-        <Tab.Navigator
+    <SideMenu menu={SideMenuContent({ type: true })} isOpen={isOpen} onChange={() => { setIsopen(!isOpen); }} openMenuOffset={275}>
+      <Tab.Navigator
         screenOptions={{
           tabBarActiveTintColor: '#fc9824',
-          tabBarLabelPosition:'below-icon',
-          headerTitleAlign:'center',
-          headerTitleStyle:{
-            color:'white',
-            fontSize:18,
+          tabBarLabelPosition: 'below-icon',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 18,
           },
-          headerBackground: ()=>
-          <LinearGradient
-            colors={['#223346', '#76848F']}
-            style={{ flex: 1 }}
-            start={{x: 0, y: 0}}
-            end={{x: 0, y: 40}}
-          />,
-          headerStyle:{
+          headerBackground: () =>
+            <LinearGradient
+              colors={['#223346', '#76848F']}
+              style={{ flex: 1 }}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 0, y: 40 }}
+            />,
+          headerStyle: {
             flexDirection: 'column',
-            height:40,
-            backgroundColor:'#223346',
-            display:'flex',
-            justifyContent:'center',
+            height: 40,
+            backgroundColor: '#223346',
+            display: 'flex',
+            justifyContent: 'center',
           },
           tabBarStyle: {
             height: 50,
@@ -128,45 +128,45 @@ function CFTabNavigator() {
             paddingBottom: 5
           }
         }}
-        >
-          <Tab.Screen
-            name="MyLeadsCFScreen"
-            component={MyLeadsCFScreen}
-            options={({ navigation }: CFTabScreenProps<'MyLeadsCFScreen'>) => ({
-              title: 'My Leads',
-              tabBarLabel: config.enableDebugFeatures ? 'My Leads CF' : 'My Leads',
-              tabBarIcon: ({ color }) => (
-                <FontAwesome5 name="bullseye" size={20} color={color} />
-              ),
-              headerLeft: () => (
-                <NavigationButtonCreate
-                  onPress={() => {
-                    setIsopen(true);
-                  }}
-                />
-              ),
-              headerRight: () => (
-                <HeaderButtonCreate
-                  onPress={() => {
-                    navigation.navigate('CreateLeadCFScreen')
-                  }}
-                />
-              ),
-              
-            })}
-          />
-          <Tab.Screen
-            name="ChangelogScreen"
-            component={ChangelogScreen}
-            options={{
-              title: 'Pipe Changes (Log)',
-              tabBarLabel: 'Log',
-              tabBarIcon: ({ color }) => (
-                <FontAwesome5 name="list-ul" size={20} color={color} />
-              ),
-            }}
-          />
-          {/* <Tab.Screen
+      >
+        <Tab.Screen
+          name="MyLeadsCFScreen"
+          component={MyLeadsCFScreen}
+          options={({ navigation }: CFTabScreenProps<'MyLeadsCFScreen'>) => ({
+            title: 'My Leads',
+            tabBarLabel: config.enableDebugFeatures ? 'My Leads CF' : 'My Leads',
+            tabBarIcon: ({ color }) => (
+              <FontAwesome5 name="bullseye" size={20} color={color} />
+            ),
+            headerLeft: () => (
+              <NavigationButtonCreate
+                onPress={() => {
+                  setIsopen(true);
+                }}
+              />
+            ),
+            headerRight: () => (
+              <HeaderButtonCreate
+                onPress={() => {
+                  navigation.navigate('CreateLeadCFScreen')
+                }}
+              />
+            ),
+
+          })}
+        />
+        <Tab.Screen
+          name="ChangelogScreen"
+          component={ChangelogScreen}
+          options={{
+            title: 'Pipe Changes (Log)',
+            tabBarLabel: 'Log',
+            tabBarIcon: ({ color }) => (
+              <FontAwesome5 name="list-ul" size={20} color={color} />
+            ),
+          }}
+        />
+        {/* <Tab.Screen
             name="SettingsScreen"
             component={SettingsScreen}
             options={{
@@ -176,7 +176,7 @@ function CFTabNavigator() {
               ),
             }}
           /> */}
-        </Tab.Navigator>
-      </SideMenu>
+      </Tab.Navigator>
+    </SideMenu>
   )
 }

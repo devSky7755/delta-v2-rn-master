@@ -106,94 +106,94 @@ export type MCTabScreenNavigationProp<Screen extends keyof MCTabParamList> =
   MCTabScreenProps<Screen>['navigation']
 
 const Tab = createBottomTabNavigator<MCTabParamList>()
-const isOpen=false;
+const isOpen = false;
 function MCTabNavigator() {
 
-  const [isOpen,  setIsopen] = React.useState(false);
+  const [isOpen, setIsopen] = React.useState(false);
   return (
-    <SideMenu menu={SideMenuContent({type:false})}  isOpen={isOpen} onChange={()=>{setIsopen(!isOpen);}} openMenuOffset={Dimensions.get('window').width*0.2}>
-    <Tab.Navigator
-      screenOptions={{
+    <SideMenu menu={SideMenuContent({ type: false })} isOpen={isOpen} onChange={() => { setIsopen(!isOpen); }} openMenuOffset={275}>
+      <Tab.Navigator
+        screenOptions={{
 
-        tabBarActiveTintColor: '#fc9824',
-        tabBarLabelPosition:'below-icon',
-        headerTitleAlign:'center',
-        headerTitleStyle:{
-          color:'white',
-          fontSize:18,
-          textTransform:'uppercase'
-        },
-        headerBackground: ()=>
-          <LinearGradient
-            colors={['#223346', '#76848F']}
-            style={{ flex: 1 }}
-            start={{x: 0, y: 0}}
-            end={{x: 0, y: 40}}
-          />,
-        headerStyle:{
-          flexDirection: 'column',
-          height:40,
-          backgroundColor:'#223346',
-          display:'flex',
-          justifyContent:'center',
-        },
-        tabBarStyle: {
-          height: 50,
-          paddingTop: 10,
-          paddingBottom: 5
-        }
-      }}
-    >
-      <Tab.Screen
-        name="MyLeadsMCScreen"
-        component={MyLeadsMCScreen}
-        options={({ navigation }: MCTabScreenProps<'MyLeadsMCScreen'>) => ({
-          title : 'My Leads',
-          tabBarLabel: config.enableDebugFeatures ? 'My Leads MC' : 'My Leads',
-          tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="bullseye" size={20} color={color} />
-          ),
-          tabBarStyle: {
-            backgroundColor: colors.BG
+          tabBarActiveTintColor: '#fc9824',
+          tabBarLabelPosition: 'below-icon',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 18,
+            textTransform: 'uppercase'
           },
-          headerLeft: () => (
-            <NavigationButtonCreate
-              onPress={() => {
-                setIsopen(true);
-              }}
-            />
-          ),
-          headerRight: () => (
-            <HeaderButtonCreate
-              onPress={() => {
-                navigation.navigate('CreateLeadMCScreen')
-              }}
-            />
-          ),
-        })}
-      />
-      <Tab.Screen
-        name="MyAccountsScreen"
-        component={MyAccountsScreen}
-        options={{
-          tabBarLabel: 'My Accounts',
-          tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="city" size={20} color={color} />
-          ),
+          headerBackground: () =>
+            <LinearGradient
+              colors={['#223346', '#76848F']}
+              style={{ flex: 1 }}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 0, y: 40 }}
+            />,
+          headerStyle: {
+            flexDirection: 'column',
+            height: 40,
+            backgroundColor: '#223346',
+            display: 'flex',
+            justifyContent: 'center',
+          },
+          tabBarStyle: {
+            height: 50,
+            paddingTop: 10,
+            paddingBottom: 5
+          }
         }}
-      />
-      <Tab.Screen
-        name="ChangelogScreen"
-        component={ChangelogScreen}
-        options={{
-          title: 'Pipe Changes (Log)',
-          tabBarLabel: 'Log',
-          tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="list-ul" size={20} color={color} />
-          ),
-        }}
-      />
-      {/* <Tab.Screen
+      >
+        <Tab.Screen
+          name="MyLeadsMCScreen"
+          component={MyLeadsMCScreen}
+          options={({ navigation }: MCTabScreenProps<'MyLeadsMCScreen'>) => ({
+            title: 'My Leads',
+            tabBarLabel: config.enableDebugFeatures ? 'My Leads MC' : 'My Leads',
+            tabBarIcon: ({ color }) => (
+              <FontAwesome5 name="bullseye" size={20} color={color} />
+            ),
+            tabBarStyle: {
+              backgroundColor: colors.BG
+            },
+            headerLeft: () => (
+              <NavigationButtonCreate
+                onPress={() => {
+                  setIsopen(true);
+                }}
+              />
+            ),
+            headerRight: () => (
+              <HeaderButtonCreate
+                onPress={() => {
+                  navigation.navigate('CreateLeadMCScreen')
+                }}
+              />
+            ),
+          })}
+        />
+        <Tab.Screen
+          name="MyAccountsScreen"
+          component={MyAccountsScreen}
+          options={{
+            tabBarLabel: 'My Accounts',
+            tabBarIcon: ({ color }) => (
+              <FontAwesome5 name="city" size={20} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="ChangelogScreen"
+          component={ChangelogScreen}
+          options={{
+            title: 'Pipe Changes (Log)',
+            tabBarLabel: 'Log',
+            tabBarIcon: ({ color }) => (
+              <FontAwesome5 name="list-ul" size={20} color={color} />
+            ),
+          }}
+        />
+        {/* <Tab.Screen
         name="SettingsScreen"
         component={SettingsScreen}
         options={{
@@ -203,7 +203,7 @@ function MCTabNavigator() {
           ),
         }}
       /> */}
-    </Tab.Navigator>
+      </Tab.Navigator>
     </SideMenu>
   )
 }
